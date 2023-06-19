@@ -16,7 +16,6 @@ public class SpringCube : MonoBehaviour
     void FixedUpdate()
     {
         time -= Time.deltaTime;
-        Debug.Log(time);
         if (time <= 0)
         {
             anim.SetBool("goSpring", true);
