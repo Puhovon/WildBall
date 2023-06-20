@@ -1,37 +1,40 @@
 using UnityEngine;
 
-public class MainMenuManager : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private GameObject chooseLevel, settings, mainMenu;
-    
-    private void Awake()
+    public class MainMenuManager : MonoBehaviour
     {
-        mainMenu.SetActive(true);
-        chooseLevel.SetActive(false);
-        settings.SetActive(false);
-    }
+        [SerializeField] private GameObject chooseLevel, settings, mainMenu;
 
-    public void OpenSettings()
-    {
-        mainMenu.SetActive(false);
-        settings.SetActive(true);
-    }
+        private void Awake()
+        {
+            mainMenu.SetActive(true);
+            chooseLevel.SetActive(false);
+            settings.SetActive(false);
+        }
 
-    public void OpenLevels()
-    {
-        mainMenu.SetActive(false);
-        chooseLevel.SetActive(true);
-    }
+        public void OpenSettings()
+        {
+            mainMenu.SetActive(false);
+            settings.SetActive(true);
+        }
 
-    public void ReturnToMainMenu()
-    {
-        mainMenu.SetActive(true);
-        chooseLevel.SetActive(false);
-        settings.SetActive(false);
-    }
+        public void OpenLevels()
+        {
+            mainMenu.SetActive(false);
+            chooseLevel.SetActive(true);
+        }
 
-    public void Exit()
-    {
-        Application.Quit();
+        public void ReturnToMainMenu()
+        {
+            mainMenu.SetActive(true);
+            chooseLevel.SetActive(false);
+            settings.SetActive(false);
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
     }
 }

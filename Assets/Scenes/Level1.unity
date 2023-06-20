@@ -502,34 +502,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 754951323}
     m_Modifications:
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_Axis.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_Axis.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_UseMotor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_Motor.force
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_ConnectedBody
-      value: 
-      objectReference: {fileID: 754951324}
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.00000020861626
-      objectReference: {fileID: 0}
-    - target: {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-      propertyPath: m_Motor.targetVelocity
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 5568331102988516814, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.64
@@ -582,9 +554,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flipper
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 501329855165154861, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
-    - {fileID: 1801710026575310100, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60190f4325e87704db5ebef9452b43c0, type: 3}
 --- !u!1 &600723411 stripped
 GameObject:
@@ -639,7 +609,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -3.6400003, y: -0.00000020861626, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -670,7 +640,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 754951323}
     m_Modifications:
-    - target: {fileID: -6804093332172295753, guid: c45ee7485df6fa94ab26f0b80912ced3, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: eeb7f239217efd743a77109e8242d475, type: 2}
@@ -734,9 +704,7 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1523507383371489253, guid: c45ee7485df6fa94ab26f0b80912ced3, type: 3}
-    - {fileID: -6804093332172295753, guid: c45ee7485df6fa94ab26f0b80912ced3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45ee7485df6fa94ab26f0b80912ced3, type: 3}
 --- !u!1 &754951322
 GameObject:
@@ -861,8 +829,7 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2526395418827662565, guid: a9a251fa69a078f4ca3aa1a031ab9c8a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a251fa69a078f4ca3aa1a031ab9c8a, type: 3}
 --- !u!1 &1268260124 stripped
 GameObject:

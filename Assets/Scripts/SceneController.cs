@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+namespace Assets.Scripts
 {
-
-    public void ChangeScene(int Index)
+    public class SceneController : MonoBehaviour
     {
-        SceneManager.LoadScene(Index);
+        public void ChangeScene(int Index)
+        {
+            SceneManager.LoadScene(Index);
+        }
     }
 }

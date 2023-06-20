@@ -1,34 +1,37 @@
 using UnityEngine;
 using Random = System.Random;
 
-public class RandomCube : MonoBehaviour
+namespace Assets.Scripts
 {
-    private Animator anim;
-    private Rigidbody rb;
-    private int random;
-
-    private void Awake()
+    public class RandomCube : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-        rb = GetComponentInParent<Rigidbody>();
-    }
+        private Animator anim;
+        private Rigidbody rb;
+        private int random;
 
-    private void FixedUpdate()
-    {
-        switch (random)
+        private void Awake()
         {
-            case 0:
-                anim.SetBool("Rotate", false);
-                break;
-            case 1:
-                anim.SetBool("Rotate", true);
-                break;
+            anim = GetComponent<Animator>();
+            rb = GetComponentInParent<Rigidbody>();
         }
-    }
 
-    public void GetNewRandomInt()
-    {
-        Random rand = new Random();
-        random = rand.Next(0,2);
+        private void FixedUpdate()
+        {
+            switch (random)
+            {
+                case 0:
+                    anim.SetBool("Rotate", false);
+                    break;
+                case 1:
+                    anim.SetBool("Rotate", true);
+                    break;
+            }
+        }
+
+        public void GetNewRandomInt()
+        {
+            Random rand = new Random();
+            random = rand.Next(0, 2);
+        }
     }
 }

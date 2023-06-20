@@ -1,28 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Game : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private GameObject pause, btn;
 
-    private void Awake()
+    public class Game : MonoBehaviour
     {
-        btn.SetActive(true);
-        pause.SetActive(false);
-        Time.timeScale = 1;
-    }
-    public void Pause()
-    {
-        pause.SetActive(true);
-        btn.SetActive(false);
-        Time.timeScale = 0;
-    }
+        [SerializeField] private GameObject pause, btn;
 
-    public void Resume()
-    {
-        btn.SetActive(true);
-        pause.SetActive(false);
-        Time.timeScale = 1;
+        private void Awake()
+        {
+            btn.SetActive(true);
+            pause.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        public void Pause()
+        {
+            pause.SetActive(true);
+            btn.SetActive(false);
+            Time.timeScale = 0;
+        }
+
+        public void Resume()
+        {
+            btn.SetActive(true);
+            pause.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }

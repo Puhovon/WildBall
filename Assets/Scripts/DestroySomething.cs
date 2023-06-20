@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroySomething : MonoBehaviour
+namespace Assets.Scripts
 {
-    private Animator anim;
-
-    void Awake()
+    public class DestroySomething : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        anim.SetTrigger("Collect");
-    }
+        private Animator anim;
 
+        void Awake()
+        {
+            anim = GetComponent<Animator>();
+        }
 
+        void OnTriggerEnter(Collider other)
+        {
+            anim.SetTrigger("Collect");
+        }
+    }
 }
