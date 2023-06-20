@@ -3,28 +3,28 @@ using UnityEngine;
 
 public class SpringCube : MonoBehaviour
 {
-    private Animator anim;
-
-    private float time = 2;
-    // Start is called before the first frame update
+    private Animator _anim;
+    private int _count;
     void Start()
     {
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
+        _count = 0;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        time -= Time.deltaTime;
-        if (time <= 0)
+        if (_count >= 2)
         {
-            anim.SetBool("goSpring", true);
-            time = 2;
+            _anim.SetBool("GoSpring", true);
+            Debug.Log(_count);
         }
         else
         {
-            anim.SetBool("goSpring", false);
+            _anim.SetBool("GoSpring", false);
         }
     }
 
+    public int CounterBeforeSpring => _count++;
+
+    public int CounterAfterSpring => _count = 0;
 }
