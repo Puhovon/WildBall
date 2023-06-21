@@ -1,66 +1,38 @@
 using UnityEngine;
-using Random = System.Random;
-
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
+    [RequireComponent(typeof(PlayerMovement))]
     public class PlayerController : MonoBehaviour
     {
-        private Animator anim;
-        private Rigidbody rb;
-        private int _num;
-        Random rand = new Random();
+        private Vector3 movement;
+        private PlayerMovement playerMovement;
+        private Game gameController;
 
         private void Awake()
         {
-            anim = GetComponent<Animator>();
-            rb = GetComponent<Rigidbody>();
-            _num = 0;
+            playerMovement = GetComponent<PlayerMovement>();
+            gameController = GameObject.Find("Manager").GetComponent<Game>();
+        }
+
+        private void Update()
+        {
+            float horizontal = Input.GetAxis(GlobalStringVar.HORIZONTAL_AXIS);
+            float vertical = Input.GetAxis(GlobalStringVar.VERTICAL_AXIS);
+
+            movement = new Vector3(horizontal, 0, vertical).normalized;
         }
 
         private void FixedUpdate()
         {
-            switch (_num)
-            {
-                case 0: 
-                    anim.SetBool("GoPulling", false);
-                    break;
-                case 1:
-                    anim.SetBool("GoPulling", true);
-                    break;
-            }
+            playerMovement.MoveCharacter(movement);
         }
 
-        public int GetRandomNum => _num = rand.Next(0,2);
-        //Debug.Log("Fixed Update");
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    rb.AddForce(0.5f, 0, 0);
-        //    Debug.Log("Press W");
-
-        //}
-
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    rb.AddForce(-0.5f, 0, 0);
-        //    Debug.Log("Press S");
-
-        //}
-
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    rb.AddForce(0, 0, 0.5f);
-        //    Debug.Log("Press D");
-
-        //}
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    rb.AddForce(0, 0, -0.5f);
-        //    Debug.Log("Press A");
-
-        //}
-
-        //anim.SetFloat("Velocity", rb.velocity.magnitude);
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("DeathTrigger"))
+                gameController.GameOver();
+        }
     }
 }

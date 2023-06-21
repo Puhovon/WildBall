@@ -9,5 +9,11 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene(Index);
         }
+
+        public void ReloadScene()
+        {
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(index);
+        }
     }
 }

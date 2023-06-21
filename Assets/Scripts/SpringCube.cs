@@ -18,7 +18,6 @@ namespace Assets.Scripts
             if (_count >= 2)
             {
                 _anim.SetBool("GoSpring", true);
-                Debug.Log(_count);
             }
             else
             {

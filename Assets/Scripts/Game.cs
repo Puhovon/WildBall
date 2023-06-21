@@ -1,16 +1,23 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
 
     public class Game : MonoBehaviour
     {
-        [SerializeField] private GameObject pause, btn;
+        [SerializeField] private GameObject pause,
+            btn,
+            gameOver;
+
+        [SerializeField] private Text pressButtonText;
 
         private void Awake()
         {
             btn.SetActive(true);
             pause.SetActive(false);
+            gameOver.SetActive(false);
             Time.timeScale = 1;
         }
 
@@ -27,5 +34,22 @@ namespace Assets.Scripts
             pause.SetActive(false);
             Time.timeScale = 1;
         }
+
+        public void GameOver()
+        {
+            Time.timeScale = 0;
+            btn.SetActive(false);
+            gameOver.SetActive(true);
+        }
+
+        public IEnumerator pressText()
+        {
+            pressButtonText.text = "Press [E] to open gate.";
+            pressButtonText.color = Color.white;
+            yield return new WaitForSeconds(4);
+            pressButtonText.gameObject.SetActive(false);
+        }
+        
+        
     }
 }
