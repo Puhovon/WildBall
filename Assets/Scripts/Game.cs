@@ -41,15 +41,5 @@ namespace Assets.Scripts
             btn.SetActive(false);
             gameOver.SetActive(true);
         }
-
-        public IEnumerator pressText()
-        {
-            pressButtonText.text = "Press [E] to open gate.";
-            pressButtonText.color = Color.white;
-            yield return new WaitForSeconds(4);
-            pressButtonText.gameObject.SetActive(false);
-        }
-        
-        
     }
 }

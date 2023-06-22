@@ -1,20 +1,18 @@
-using System;
-using System.Collections;
 using Assets.Scripts;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HarrowOpen : MonoBehaviour
 {
     [SerializeField] private AudioSource audio;
+    [SerializeField] private Text textToPress;
     private Animation anim;
-    private Game gameController;
     private bool playerOnTrigger = false;
     private int countOfOpen = 0;
     private void Awake()
     {
         anim = GetComponentInParent<Animation>();
         Debug.Log(audio.clip.name);
-        gameController = GameObject.Find("Manager").GetComponent<Game>();
     }
 
     private void FixedUpdate()
@@ -37,14 +35,16 @@ public class HarrowOpen : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(gameController.pressText());
+            textToPress.gameObject.SetActive(true);
+            textToPress.color = Color.white;
+            textToPress.text = "Press [E] to open Gate";
         }
-
         playerOnTrigger = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        textToPress.gameObject.SetActive(false);
         playerOnTrigger = false;
     }
 }
