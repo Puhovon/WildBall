@@ -23,7 +23,7 @@ public class Finish : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                sceneController.NextScene();
+                sceneController.ChangeScene(0);
             }
         }
     }
