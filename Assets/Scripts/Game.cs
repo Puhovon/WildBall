@@ -23,6 +23,7 @@ namespace Assets.Scripts
 
         public void Pause()
         {
+            Debug.Log("Pause");
             pause.SetActive(true);
             btn.SetActive(false);
             Time.timeScale = 0;
@@ -40,6 +41,11 @@ namespace Assets.Scripts
             Time.timeScale = 0;
             btn.SetActive(false);
             gameOver.SetActive(true);
+        }
+
+        public void Print()
+        {
+            Debug.Log("Print");
         }
     }
 }

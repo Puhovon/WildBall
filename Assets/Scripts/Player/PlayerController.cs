@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Player
             float horizontal = Input.GetAxis(GlobalStringVar.HORIZONTAL_AXIS);
             float vertical = Input.GetAxis(GlobalStringVar.VERTICAL_AXIS);
 
-            movement = new Vector3(horizontal, 0, vertical).normalized;
+            movement = new Vector3(horizontal,0 , vertical).normalized;
         }
 
         private void FixedUpdate()

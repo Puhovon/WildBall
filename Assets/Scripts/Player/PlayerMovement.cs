@@ -21,6 +21,8 @@ namespace Assets.Scripts.Player
         {
             playerRigidbody.AddForce(movement * speed);
         }
+
+
 #if UNITY_EDITOR
 
         [ContextMenu("Reset values")]
