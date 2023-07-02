@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private Transform playerTransform;
-
-    private Vector3 offset;
-
-    private void Start()
+    public class CameraMovement : MonoBehaviour
     {
-        offset = transform.position - playerTransform.position;
-    }
+        [SerializeField] private Transform playerTransform;
 
-    private void FixedUpdate()
-    {
-        transform.position = playerTransform.position + offset;
-        
+        private Vector3 offset;
+
+        private void Start()
+        {
+            offset = transform.position - playerTransform.position;
+        }
+
+        private void FixedUpdate()
+        {
+            transform.position = playerTransform.position + offset;
+
+        }
     }
 }

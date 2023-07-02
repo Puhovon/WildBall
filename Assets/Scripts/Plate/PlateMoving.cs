@@ -1,21 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlateMoving : MonoBehaviour
+namespace Plate
 {
-    
-    private void OnCollisionEnter(Collision collision)
+    public class PlateMoving : MonoBehaviour
     {
-        if (collision.gameObject.tag == "Player")
-            collision.transform.SetParent(transform);
-        
-    }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+                collision.transform.SetParent(transform);
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-            collision.transform.SetParent(null);
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+                collision.transform.SetParent(null);
+        }
     }
 }

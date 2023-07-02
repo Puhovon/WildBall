@@ -4,7 +4,9 @@ namespace Assets.Scripts
 {
     public class MainMenuManager : MonoBehaviour
     {
-        [SerializeField] private GameObject chooseLevel, settings, mainMenu;
+        [SerializeField] private GameObject chooseLevel;
+        [SerializeField] private GameObject settings;
+        [SerializeField] private GameObject mainMenu;
 
         private void Awake()
         {
@@ -12,6 +14,7 @@ namespace Assets.Scripts
             chooseLevel.SetActive(false);
             settings.SetActive(false);
         }
+        
 
         public void OpenSettings()
         {

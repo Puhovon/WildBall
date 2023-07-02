@@ -1,46 +1,46 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Finish : MonoBehaviour
+namespace Finish
 {
-    [SerializeField] private Text pressButton;
-    private SceneController sceneController;
-    private bool playerOnTrigger = false;
-    private int thisSceneIndex;
-    private void Awake()
+    public class Finish : MonoBehaviour
     {
-        sceneController = GameObject.Find("Manager").GetComponent<SceneController>();
-        
-    }
+        [SerializeField] private Text pressButton;
+        private SceneController sceneController;
+        private bool playerOnTrigger = false;
+        private int thisSceneIndex;
 
-    private void FixedUpdate()
-    {
-        if (playerOnTrigger)
+        private void Awake()
         {
-            if (Input.GetKey(KeyCode.E))
+            sceneController = GameObject.Find("Manager").GetComponent<SceneController>();
+        }
+
+        private void Update()
+        {
+            if (playerOnTrigger)
             {
-                sceneController.ChangeScene(0);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    sceneController.ChangeScene(0);
+                }
             }
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private void OnTriggerEnter(Collider other)
         {
-            pressButton.gameObject.SetActive(true);
-            pressButton.text = "press [E] to finish";
-            pressButton.color = Color.white;
-            playerOnTrigger = true;
+            if (other.CompareTag("Player"))
+            {
+                pressButton.gameObject.SetActive(true);
+                pressButton.text = "press [E] to finish";
+                pressButton.color = Color.white;
+                playerOnTrigger = true;
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        playerOnTrigger = false;
+        private void OnTriggerExit(Collider other)
+        {
+            playerOnTrigger = false;
+        }
     }
 }

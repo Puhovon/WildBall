@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +6,9 @@ namespace Assets.Scripts
 
     public class Game : MonoBehaviour
     {
-        [SerializeField] private GameObject pause,
-            btn,
-            gameOver;
+        [SerializeField] private GameObject pause;
+        [SerializeField] private GameObject btn;
+        [SerializeField] private GameObject gameOver;
 
         [SerializeField] private Text pressButtonText;
 
@@ -41,11 +40,6 @@ namespace Assets.Scripts
             Time.timeScale = 0;
             btn.SetActive(false);
             gameOver.SetActive(true);
-        }
-
-        public void Print()
-        {
-            Debug.Log("Print");
         }
     }
 }

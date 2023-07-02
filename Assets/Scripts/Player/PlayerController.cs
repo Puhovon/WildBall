@@ -1,6 +1,5 @@
-using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
@@ -10,17 +9,21 @@ namespace Assets.Scripts.Player
         private Vector3 movement;
         private PlayerMovement playerMovement;
         private Game gameController;
-
+        private Animator animator;
+        private ParticleSystem particleSystem;
+        
         private void Awake()
         {
+            particleSystem = GetComponentInChildren<ParticleSystem>();
+            animator = GetComponent<Animator>();
             playerMovement = GetComponent<PlayerMovement>();
             gameController = GameObject.Find("Manager").GetComponent<Game>();
         }
 
         private void Update()
         {
-            float horizontal = Input.GetAxis(GlobalStringVar.HORIZONTAL_AXIS);
-            float vertical = Input.GetAxis(GlobalStringVar.VERTICAL_AXIS);
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
             movement = new Vector3(horizontal,0 , vertical).normalized;
         }
@@ -33,7 +36,22 @@ namespace Assets.Scripts.Player
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("DeathTrigger"))
-                gameController.GameOver();
+            {
+                animator.SetTrigger("Die");
+                StartCoroutine(Die());
+            }
+            
+        }
+
+        private IEnumerator Die()
+        {
+            yield return new WaitForSecondsRealtime(2);
+            gameController.GameOver();
+        }
+
+        private void StartParticle()
+        {
+            particleSystem.Play();
         }
     }
 }

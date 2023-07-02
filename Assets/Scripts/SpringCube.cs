@@ -6,6 +6,9 @@ namespace Assets.Scripts
     {
         private Animator _anim;
         private int _count;
+        
+        public int CounterBeforeSpring => _count++;
+        public int CounterAfterSpring => _count = 0;
 
         private void Start()
         {
@@ -13,7 +16,7 @@ namespace Assets.Scripts
             _count = 0;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (_count >= 2)
             {
@@ -24,9 +27,5 @@ namespace Assets.Scripts
                 _anim.SetBool("GoSpring", false);
             }
         }
-
-        public int CounterBeforeSpring => _count++;
-
-        public int CounterAfterSpring => _count = 0;
     }
 }

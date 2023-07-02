@@ -1,50 +1,59 @@
-using Assets.Scripts;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class HarrowOpen : MonoBehaviour
+namespace Decorate.Gate
 {
-    [SerializeField] private AudioSource audio;
-    [SerializeField] private Text textToPress;
-    private Animation anim;
-    private bool playerOnTrigger = false;
-    private int countOfOpen = 0;
-    private void Awake()
+    public class HarrowOpen : MonoBehaviour
     {
-        anim = GetComponentInParent<Animation>();
-        Debug.Log(audio.clip.name);
-    }
+        [SerializeField] private AudioSource audio;
+        [SerializeField] private Text textToPress;
+        private Animation anim;
+        private bool playerOnTrigger = false;
+        private int countOfOpen = 0;
 
-    private void FixedUpdate()
-    {
-        if(countOfOpen < 1)
+        private void Awake()
         {
-            if (playerOnTrigger)
+            anim = GetComponentInParent<Animation>();
+            Debug.Log(audio.clip.name);
+        }
+
+        private void Update()
+        {
+            if (countOfOpen < 1)
             {
-                if (Input.GetKey(KeyCode.E))
+                if (playerOnTrigger)
                 {
-                    anim.Play();
-                    audio.Play();
-                    countOfOpen++;
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        anim.Play();
+                        audio.Play();
+                        countOfOpen++;
+                    }
                 }
             }
-        }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+            if (countOfOpen >= 1)
+            {
+                Destroy(transform.GetComponent<HarrowOpen>());
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
         {
-            textToPress.gameObject.SetActive(true);
-            textToPress.color = Color.white;
-            textToPress.text = "Press [E] to open Gate";
-        }
-        playerOnTrigger = true;
-    }
+            if (other.gameObject.CompareTag("Player"))
+            {
+                textToPress.gameObject.SetActive(true);
+                textToPress.color = Color.white;
+                textToPress.text = "Press [E] to open Gate";
+            }
 
-    private void OnTriggerExit(Collider other)
-    {
-        textToPress.gameObject.SetActive(false);
-        playerOnTrigger = false;
+            playerOnTrigger = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            textToPress.gameObject.SetActive(false);
+            playerOnTrigger = false;
+        }
     }
 }

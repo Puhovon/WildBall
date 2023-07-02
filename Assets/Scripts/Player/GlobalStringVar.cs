@@ -4,11 +4,11 @@ namespace Assets.Scripts.Player
     {
         #region Inputs
 
-        public const string HORIZONTAL_AXIS = "Horizontal";
+        public const string HorizontalAxis = "Horizontal";
 
-        public const string VERTICAL_AXIS = "Vertical";
+        public const string VerticalAxis = "Vertical";
 
-        public const string JUMP = "Jump";
+        public const string Jump = "Jump";
 
         #endregion
     }

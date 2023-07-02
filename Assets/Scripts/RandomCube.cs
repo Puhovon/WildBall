@@ -6,13 +6,11 @@ namespace Assets.Scripts
     public class RandomCube : MonoBehaviour
     {
         private Animator anim;
-        private Rigidbody rb;
         private int random;
 
         private void Awake()
         {
             anim = GetComponent<Animator>();
-            rb = GetComponentInParent<Rigidbody>();
         }
 
         private void FixedUpdate()

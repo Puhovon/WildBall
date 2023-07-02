@@ -1,47 +1,49 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Door : MonoBehaviour
+namespace Door
 {
-    [SerializeField]private Text text;
-    private bool canOpen = false;
-    private Animation animation;
-    private int counter = 0;
-    private void Awake()
+    public class Door : MonoBehaviour
     {
-        animation = GetComponentInChildren<Animation>();
-    }
+        [SerializeField] private Text text;
+        private bool canOpen = false;
+        private Animation animation;
+        private int counter = 0;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        { 
-            text.gameObject.SetActive(true);
-            text.text = "Press [E] to open door";
-            text.color = Color.white;
-            canOpen = true;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (canOpen)
+        private void Awake()
         {
-            if (counter < 1)
+            animation = GetComponentInChildren<Animation>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
             {
-                if (Input.GetKey(KeyCode.E))
-                {
-                    animation.Play();
-                    canOpen = false;
-                }
+                text.gameObject.SetActive(true);
+                text.text = "Press [E] to open door";
+                text.color = Color.white;
+                canOpen = true;
             }
         }
 
-        if (!canOpen)
+        private void Update()
         {
-            text.gameObject.SetActive(false);
+            if (canOpen)
+            {
+                if (counter < 1)
+                {
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        animation.Play();
+                        canOpen = false;
+                    }
+                }
+            }
+
+            if (!canOpen)
+            {
+                text.gameObject.SetActive(false);
+            }
         }
     }
 }

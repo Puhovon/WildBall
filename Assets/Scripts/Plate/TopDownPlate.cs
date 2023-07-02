@@ -1,64 +1,59 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
-public class TopDownPlate : MonoBehaviour
+namespace Plate
 {
-    public bool canMove;
-    [SerializeField, Range(0, 10)] private int speed;
-    [SerializeField] private int startPoint;
-    [SerializeField] private Transform[] points;
-
-    private int i;
-    private bool reverse;
-
-    private void Awake()
+    public class TopDownPlate : MonoBehaviour
     {
-        transform.position = points[startPoint].position;
-        i = startPoint;
-    }
+        [SerializeField, Range(0, 10)] private int speed;
+        [SerializeField] private Transform point;
+        public bool canMove = false;
 
-    private void Update()
-    {
-        if (Vector3.Distance(transform.position, points[i].position) < 0.01f)
-        {
-            canMove = false;
-            if (i == points.Length -1)
-            {
-                reverse = true;
-                i--;
-                return;
-            } else if (i == 0)
-            {
-                reverse = true;
-                i++;
-                return;
-            }
-
-            if (reverse)
-            {
-                i--;
-            }
-            else
-            {
-                i++;
-            }
-        }
+        private int i;
+        private bool reverse;
+        private Rigidbody rigidbody;
+        private Vector3 movement;
         
-        if (canMove)
+        private void Awake()
         {
-            transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+            movement = new Vector3(0, 1, 0);
+            rigidbody = GetComponent<Rigidbody>();
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-            canMove = true;
-    }
-    
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "Player")
-            canMove = false;
+        private void FixedUpdate()
+        {
+            CheckСanMove();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+                canMove = true;
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+                canMove = false;
+        }
+
+        private void Move()
+        {
+            rigidbody.MovePosition(transform.position + movement * Time.deltaTime * speed);
+        }
+
+        private void CheckСanMove()
+        {   
+            if(Vector3.Distance(transform.position, point.position) < 0.01f)
+            {
+                canMove = false;
+                Destroy(GetComponent<TopDownPlate>());
+            }
+
+            if (canMove)
+            {
+                Move();
+            }
+        }
     }
 }

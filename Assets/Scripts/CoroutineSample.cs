@@ -1,19 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoroutineSample : MonoBehaviour
+namespace Assets.Scripts
 {
-    private void Start()
+    public class CoroutineSample : MonoBehaviour
     {
-        StartCoroutine(timer());
-    }
-
-    private IEnumerator timer()
-    {
-        for (int i = 0; i < 10; i++)
+        private void Start()
         {
-            yield return new WaitForSeconds(2);
+            StartCoroutine(timer());
+        }
+
+        private IEnumerator timer()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                yield return new WaitForSeconds(2);
+            }
         }
     }
 }
