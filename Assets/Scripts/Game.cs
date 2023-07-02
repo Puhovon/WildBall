@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -7,14 +8,14 @@ namespace Assets.Scripts
     public class Game : MonoBehaviour
     {
         [SerializeField] private GameObject pause;
-        [SerializeField] private GameObject btn;
+        [FormerlySerializedAs("btn")] [SerializeField] private GameObject mainOverlay;
         [SerializeField] private GameObject gameOver;
 
         [SerializeField] private Text pressButtonText;
 
         private void Awake()
         {
-            btn.SetActive(true);
+            mainOverlay.SetActive(true);
             pause.SetActive(false);
             gameOver.SetActive(false);
             Time.timeScale = 1;
@@ -24,13 +25,13 @@ namespace Assets.Scripts
         {
             Debug.Log("Pause");
             pause.SetActive(true);
-            btn.SetActive(false);
+            mainOverlay.SetActive(false);
             Time.timeScale = 0;
         }
 
         public void Resume()
         {
-            btn.SetActive(true);
+            mainOverlay.SetActive(true);
             pause.SetActive(false);
             Time.timeScale = 1;
         }
@@ -38,7 +39,7 @@ namespace Assets.Scripts
         public void GameOver()
         {
             Time.timeScale = 0;
-            btn.SetActive(false);
+            mainOverlay.SetActive(false);
             gameOver.SetActive(true);
         }
     }

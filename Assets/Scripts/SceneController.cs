@@ -8,6 +8,7 @@ namespace Assets.Scripts
         public void ChangeScene(int Index)
         {
             SceneManager.LoadScene(Index);
+            
         }
 
         public void NextScene()
