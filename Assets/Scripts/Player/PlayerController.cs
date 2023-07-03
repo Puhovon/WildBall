@@ -36,15 +36,12 @@ namespace Assets.Scripts.Player
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("DeathTrigger"))
-            {
-                animator.SetTrigger("Die");
                 StartCoroutine(Die());
-            }
-            
         }
 
         private IEnumerator Die()
         {
+            animator.SetTrigger("Die");
             yield return new WaitForSecondsRealtime(2);
             gameController.GameOver();
         }
