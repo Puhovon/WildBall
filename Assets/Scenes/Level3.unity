@@ -1096,6 +1096,10 @@ PrefabInstance:
       propertyPath: FinishGameOverlay
       value: 
       objectReference: {fileID: 2062759278}
+    - target: {fileID: 3216610785463560425, guid: c6f17cfde88f94840ad30c530078b8cc, type: 3}
+      propertyPath: finishGameOverlay
+      value: 
+      objectReference: {fileID: 2062759278}
     - target: {fileID: 3216610785463560427, guid: c6f17cfde88f94840ad30c530078b8cc, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1485,6 +1489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RandomCube
       objectReference: {fileID: 0}
+    - target: {fileID: 8901057995621686734, guid: c2494a5edc9d7f4429fae63eca1292a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f318f5f57cded34386187ce235423a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2494a5edc9d7f4429fae63eca1292a1, type: 3}
 --- !u!1 &963194225
@@ -13687,6 +13695,34 @@ PrefabInstance:
       value: Assets.Scripts.Game, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 74243198437673248, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1301722800}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 230720877530929561, guid: 4eab56a678cc53f4cb8cb96543fdfe99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}

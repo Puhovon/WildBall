@@ -35,6 +35,7 @@ namespace Decorate.Gate
             if (countOfOpen >= 1)
             {
                 Destroy(transform.GetComponent<HarrowOpen>());
+                textToPress.gameObject.SetActive(false);
             }
         }
 
@@ -52,8 +53,10 @@ namespace Decorate.Gate
 
         private void OnTriggerExit(Collider other)
         {
-            textToPress.gameObject.SetActive(false);
-            playerOnTrigger = false;
+            if (other.CompareTag("Player"))
+            {
+                playerOnTrigger = false;
+            }
         }
     }
 }

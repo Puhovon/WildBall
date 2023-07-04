@@ -10,16 +10,16 @@ namespace Assets.Scripts
         [SerializeField] private GameObject pause;
         [SerializeField] private GameObject mainOverlay;
         [SerializeField] private GameObject gameOver;
-        [SerializeField] private GameObject FinishGameOverlay;
+        [SerializeField] private GameObject finishGameOverlay;
         
         [SerializeField] private Text pressButtonText;
 
         private void Awake()
         {
+            finishGameOverlay.SetActive(false);
             mainOverlay.SetActive(true);
             pause.SetActive(false);
             gameOver.SetActive(false);
-            FinishGameOverlay.SetActive(false);
             Time.timeScale = 1;
         }
 
@@ -48,7 +48,7 @@ namespace Assets.Scripts
         public void FinishGame()
         {
             mainOverlay.SetActive(false);
-            FinishGameOverlay.SetActive(true);
+            finishGameOverlay.SetActive(true);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -32,7 +33,9 @@ namespace Assets.Scripts.Player
         {
             playerMovement.MoveCharacter(movement);
         }
-
+        
+        
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("DeathTrigger"))
@@ -50,5 +53,6 @@ namespace Assets.Scripts.Player
         {
             particleSystem.Play();
         }
+        
     }
 }

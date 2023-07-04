@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
 using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace Finish
 {
@@ -10,36 +12,24 @@ namespace Finish
     {
         [SerializeField] private Text pressButton;
         private SceneController sceneController;
-        private Animation animation;
-        private ParticleSystem particleSystem;
         
-        private bool playerOnTrigger = false;
         private int thisSceneIndex;
         
-
         private void Awake()
         {
-            animation = GetComponentInParent<Animation>();
             sceneController = GameObject.Find("Manager").GetComponent<SceneController>();
-            particleSystem = GameObject.FindGameObjectWithTag("ParticleSystem").GetComponent<ParticleSystem>();
-        }
-
-        private void Update()
-        {
-            if (playerOnTrigger)
-            {
-                
-            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log($"Name: {transform.name} Tag: {transform.tag} Parrent: {transform.parent.name} ");
             if (other.CompareTag("Player"))
             {
+                Vector3 position = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Debug.Log($"position player: {position}, postion finish: {transform.position}");
                 pressButton.gameObject.SetActive(true);
                 pressButton.text = "press [E] to finish";
                 pressButton.color = Color.white;
-                playerOnTrigger = true;
             }
         }
 
@@ -47,20 +37,16 @@ namespace Finish
         {
             if (Input.GetKey(KeyCode.E))
             {
-                StartCoroutine(CompleteLevel());
+                sceneController.NextScene();
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            playerOnTrigger = false;
+            if (other.CompareTag("Player"))
+                pressButton.gameObject.SetActive(false);
         }
 
-        private IEnumerator CompleteLevel()
-        {
-            animation.Play();
-            particleSystem.Play();
-            yield return new WaitForSeconds(3);
-        }
+        
     }
 }

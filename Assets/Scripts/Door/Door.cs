@@ -36,13 +36,15 @@ namespace Door
                     {
                         animation.Play();
                         canOpen = false;
+                        counter++;
                     }
                 }
             }
 
-            if (!canOpen)
+            if (counter >= 1)
             {
                 text.gameObject.SetActive(false);
+                Destroy(transform.GetComponent<Door>());   
             }
         }
     }
