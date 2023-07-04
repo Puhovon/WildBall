@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,22 +10,25 @@ namespace Finish
     {
         [SerializeField] private Text pressButton;
         private SceneController sceneController;
+        private Animation animation;
+        private ParticleSystem particleSystem;
+        
         private bool playerOnTrigger = false;
         private int thisSceneIndex;
+        
 
         private void Awake()
         {
+            animation = GetComponentInParent<Animation>();
             sceneController = GameObject.Find("Manager").GetComponent<SceneController>();
+            particleSystem = GameObject.FindGameObjectWithTag("ParticleSystem").GetComponent<ParticleSystem>();
         }
 
         private void Update()
         {
             if (playerOnTrigger)
             {
-                if (Input.GetKey(KeyCode.E))
-                {
-                    sceneController.ChangeScene(0);
-                }
+                
             }
         }
 
@@ -38,9 +43,24 @@ namespace Finish
             }
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                StartCoroutine(CompleteLevel());
+            }
+        }
+
         private void OnTriggerExit(Collider other)
         {
             playerOnTrigger = false;
+        }
+
+        private IEnumerator CompleteLevel()
+        {
+            animation.Play();
+            particleSystem.Play();
+            yield return new WaitForSeconds(3);
         }
     }
 }

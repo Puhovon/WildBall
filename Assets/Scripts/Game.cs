@@ -8,9 +8,10 @@ namespace Assets.Scripts
     public class Game : MonoBehaviour
     {
         [SerializeField] private GameObject pause;
-        [FormerlySerializedAs("btn")] [SerializeField] private GameObject mainOverlay;
+        [SerializeField] private GameObject mainOverlay;
         [SerializeField] private GameObject gameOver;
-
+        [SerializeField] private GameObject FinishGameOverlay;
+        
         [SerializeField] private Text pressButtonText;
 
         private void Awake()
@@ -18,6 +19,7 @@ namespace Assets.Scripts
             mainOverlay.SetActive(true);
             pause.SetActive(false);
             gameOver.SetActive(false);
+            FinishGameOverlay.SetActive(false);
             Time.timeScale = 1;
         }
 
@@ -41,6 +43,12 @@ namespace Assets.Scripts
             Time.timeScale = 0;
             mainOverlay.SetActive(false);
             gameOver.SetActive(true);
+        }
+
+        public void FinishGame()
+        {
+            mainOverlay.SetActive(false);
+            FinishGameOverlay.SetActive(true);
         }
     }
 }
